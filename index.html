@@ -289,7 +289,8 @@
         <p class="text-slate-400 mb-8 leading-relaxed">
           É lá que enviaremos o <span class="text-white font-bold">link exclusivo do encontro</span>, os materiais de apoio e <span class="text-blue-400 font-bold">presentes especiais</span> que preparamos para você.
         </p>
-        <a href="https://chat.whatsapp.com/example" class="inline-flex items-center gap-3 px-10 py-5 bg-emerald-600 hover:bg-emerald-500 text-white text-xl font-bold rounded-2xl shadow-[0_0_40px_rgba(16,185,129,0.2)] transition-all transform hover:scale-105 active:scale-95 group">
+        <p id="redirectCountdown" class="text-slate-400 text-sm mb-4">Você será redirecionado automaticamente em <span id="countdownNum" class="text-white font-bold">4</span>s...</p>
+        <a id="whatsappBtn" href="https://chat.whatsapp.com/G2MQU5A4TH4APkMZAgs6by" class="inline-flex items-center gap-3 px-10 py-5 bg-emerald-600 hover:bg-emerald-500 text-white text-xl font-bold rounded-2xl shadow-[0_0_40px_rgba(16,185,129,0.2)] transition-all transform hover:scale-105 active:scale-95 group">
           <svg class="w-7 h-7" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path><path d="M13 8H7"></path><path d="M17 12H7"></path></svg>
           CONFIRMAR MINHA VAGA
         </a>
@@ -449,6 +450,19 @@
         closeModal();
         document.getElementById('mainPage').classList.add('hidden');
         document.getElementById('thankYouPage').classList.remove('hidden');
+
+        // Contagem regressiva e redirecionamento para o grupo do WhatsApp
+        const whatsappUrl = 'https://chat.whatsapp.com/G2MQU5A4TH4APkMZAgs6by';
+        let seconds = 4;
+        const countdownEl = document.getElementById('countdownNum');
+        const interval = setInterval(() => {
+          seconds--;
+          if (countdownEl) countdownEl.textContent = seconds;
+          if (seconds <= 0) {
+            clearInterval(interval);
+            window.location.href = whatsappUrl;
+          }
+        }, 1000);
       } catch (error) {
         console.error('Erro ao enviar lead:', error);
         alert('Ocorreu um erro ao processar sua inscrição. Tente novamente.');
