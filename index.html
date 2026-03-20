@@ -447,6 +447,11 @@
           body: JSON.stringify({ nome, email, whatsapp, cargo, timestamp: new Date().toISOString(), source: 'Webinar Landing Page' }),
         });
 
+        // Dispara evento de Lead no Meta Pixel
+        if (typeof fbq === 'function') {
+          fbq('track', 'Lead');
+        }
+
         closeModal();
         document.getElementById('mainPage').classList.add('hidden');
         document.getElementById('thankYouPage').classList.remove('hidden');
