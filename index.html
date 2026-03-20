@@ -440,7 +440,7 @@
 
       try {
         // Send to n8n webhook
-        const webhookUrl = 'https://n8n.autowisebrasil.com.br/webhook-test/evento';
+        const webhookUrl = 'https://webhook.autowisebrasil.com.br/webhook/evento';
         await fetch(webhookUrl, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
